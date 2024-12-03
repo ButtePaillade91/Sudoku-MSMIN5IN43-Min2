@@ -4,6 +4,14 @@ import math
 from random import choice
 import statistics 
 
+
+def solveSudokuWrapper(input_sudoku):
+    sudoku = np.array(input_sudoku, dtype=np.int32)  # Ensure dtype is int32
+    solution = solveSudoku(sudoku)
+    return solution  # Convert to list for easier handling in C#
+ 
+
+
 startingSudoku = """
                     024007000
                     600000000
@@ -178,6 +186,6 @@ def solveSudoku (sudoku):
     f.close()
     return(tmpSudoku)
 
-solution = solveSudoku(sudoku)
+solution = solveSudokuWrapper(sudoku)
 print(CalculateNumberOfErrors(solution))
 PrintSudoku(solution)
